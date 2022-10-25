@@ -1,11 +1,14 @@
 import { Layout } from "../Layout";
 import { LayoutTitle } from "../Layout/LayoutTitle";
-import { ModalJc } from "../ModalJc";
-import { Icon } from "@iconify/react";
 import { useState } from "react";
-import { Button } from "../Button";
 import { IWorkCard } from "@/interfaces/workCards.interface";
 import "@/scss/components/Portfolio.scss";
+import { ModalJcBody } from "../ModalJc/ModalJcBody";
+import { WorkCard } from "../WorkCard";
+
+interface IModule {
+  default: string;
+}
 
 const workCards: IWorkCard[] = [
   {
@@ -58,9 +61,13 @@ const workCards: IWorkCard[] = [
   },
 ];
 
-export const Portfolio = () => {
-  const [showModal, setShowModal] = useState(false);
-  const [stateModal, setStateModal] = useState({
+const projectImgs: Record<string, IModule> = import.meta.globEager(
+  "@/assets/projects/*.webp"
+);
+
+export const Portfolio = (): JSX.Element => {
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [stateModal, setStateModal] = useState<IWorkCard>({
     id: 0,
     title: "",
     skills: "",
@@ -76,7 +83,7 @@ export const Portfolio = () => {
     img,
     link,
     description,
-  }: IWorkCard) => {
+  }: IWorkCard): void => {
     setStateModal((prev) => ({
       ...prev,
       id,
@@ -89,19 +96,14 @@ export const Portfolio = () => {
     setShowModal(true);
     document.querySelector("html")!.classList.add("disabled");
   };
-  const handlePrevModal = () => {
-    const totalWorkCards: number = workCards.length;
-    let index: number = stateModal.id - 2;
-    if (index <= 0) index = totalWorkCards - 1;
-    setStateModal({ ...workCards[index] });
+
+  const getSrc = (name: string): string => {
+    const path: string = Object.keys(projectImgs).find((item: string) =>
+      item.includes(name)
+    )!;
+    return projectImgs[path].default;
   };
-  const handleNextModal = () => {
-    const totalWorkCards: number = workCards.length;
-    let index: number = stateModal.id;
-    if (index >= totalWorkCards) index = 0;
-    setStateModal({ ...workCards[index] });
-  };
-  
+
   return (
     <Layout id="portfolio">
       <LayoutTitle name="PORTAFOLIO">
@@ -110,73 +112,23 @@ export const Portfolio = () => {
       <div className="row text-center">
         {workCards.map((w: IWorkCard) => (
           <div className="col-md-6 col-lg-4" key={w.id}>
-            <div className="Portfolio__wrap">
-              <img
-                src={`/src/assets/projects/${w.img}-min.jpg`}
-                className="Portfolio__img"
-                alt="Entel Empresas"
-                loading="lazy"
-              />
-              <div className="Portfolio__info">
-                <div>
-                  <h4 className="Portfolio__title">{w.title}</h4>
-                  <p className="Portfolio__skills">{w.skills}</p>
-                  <div className="Portfolio__links">
-                    <button
-                      className="Portfolio__icon-parent Portfolio__icon-parent--btn"
-                      onClick={() => {
-                        handleOpenModal({ ...w });
-                      }}>
-                      <Icon icon={`bx-plus`} className="Portfolio__icon" />
-                    </button>
-                    <a
-                      target="_blank"
-                      href={w.link}
-                      title={w.title}
-                      className="Portfolio__icon-parent">
-                      <Icon icon={`bx:link`} className="Portfolio__icon" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <WorkCard
+              {...w}
+              getSrc={(name: string) => getSrc(name)}
+              handleOpenModal={({ ...w }: IWorkCard) => handleOpenModal(w)}
+            />
           </div>
         ))}
       </div>
+
       {showModal && (
-        <ModalJc setShowModal={setShowModal}>
-          <div className="row justify-content-lg-center ModalJc__row">
-            <div className="col-lg-6">
-              <div className="ModalJc__figure">
-                <img
-                  src={`/src/assets/projects/${stateModal.img}.png`}
-                  alt={stateModal.title}
-                  className="ModalJc__img"
-                />
-              </div>
-            </div>
-            <div className="col-lg-6 mt-2">
-              <p className="ModalJc__skills">{stateModal.skills}</p>
-              <p className="ModalJc__title">{stateModal.title}</p>
-              <p className="ModalJc__txt">{stateModal?.description}</p>
-              <Button text="VIEW PROJECT" link={stateModal.link} />
-            </div>
-          </div>
-          <div>
-            <div className="ModalJc__button">
-              <button
-                className="ModalJc__button-item ModalJc__button-item--left btn"
-                onClick={handlePrevModal}>
-                <Icon icon={"dashicons:arrow-left-alt2"} />
-              </button>
-              <button
-                className="ModalJc__button-item ModalJc__button-item--right btn"
-                onClick={handleNextModal}>
-                <Icon icon="dashicons:arrow-right-alt2" />
-              </button>
-            </div>
-          </div>
-        </ModalJc>
+        <ModalJcBody
+          workCards={workCards}
+          stateModal={stateModal}
+          setStateModal={setStateModal}
+          setShowModal={setShowModal}
+          getSrc={(name: string) => getSrc(name)}
+        />
       )}
     </Layout>
   );
