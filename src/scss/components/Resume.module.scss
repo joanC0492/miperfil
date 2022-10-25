@@ -1,0 +1,52 @@
+.Resume {
+  $el: &;
+  &Item {
+    padding: 0 0 20px 20px;
+    margin-top: -2px;
+    border-left: 2px solid #0563bb;
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-radius: 50px;
+      left: -9px;
+      top: 0;      
+      background-color: var(--theme-bg);
+      border: 2px solid #0563bb;
+    }
+    @media (min-width: 992px) {
+      &:nth-of-type(n + 2) {
+        margin-top: -20px;
+      }
+    }
+  }
+  &Title {
+    font-size: 26px;
+    font-family: "Raleway-Bold";
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  &Business {
+    line-height: 18px;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #0563bb;
+    margin-bottom: 10px;
+  }
+  &Date {
+    font-size: 16px;
+    padding: 5px 15px;
+    display: inline-block;
+    font-family: "Raleway-SemiBold";
+    margin-bottom: 10px;
+    background: rgb(247 248 249 / 15%);
+  }
+  &Parentlist {
+    ul {
+      padding-left: 20px;
+    }
+  }
+}

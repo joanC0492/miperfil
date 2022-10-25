@@ -1,0 +1,50 @@
+.Hero {
+  overflow: hidden;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  @media (min-width: 992px) {
+    padding-left: 160px;
+    justify-content: flex-start;
+  }
+  &Title {
+    font-family: var(--ff-raleway-b);
+    color: var(--theme-title);
+    font-size: 32px;
+    line-height: 36px;
+    @media (min-width: 768px) {
+      font-size: 64px;
+      line-height: 1;
+    }
+  }
+  &Figure {
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    top: 50%;
+    max-height: 100%;
+    transform: translate(calc(50% - 35rem), -50%);
+    @media (min-width: 992px) {
+      position: absolute;
+      top: 50%;
+      z-index: -1;
+      left: 50%;
+      transform: translate(calc(50% - 35rem), -50%);
+      max-height: 100%;
+    }
+  }
+  &Img {
+    opacity: 0.25;
+  }
+  &Typewriter {
+    font-family: var(--ff-raleway-sb);
+    color: var(--theme-typewriter);
+    font-size: 20px;
+    letter-spacing: 1px;
+    @media (min-width: 992px) {
+      font-size: 26px;
+    }
+  }
+}

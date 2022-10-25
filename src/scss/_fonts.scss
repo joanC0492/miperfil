@@ -1,0 +1,22 @@
+@each $font, $glyph, $dir in $fonts-general {
+  @font-face {
+    font-family: "#{$glyph}";
+    src: url(./fonts/#{$dir}/#{$glyph}.ttf) format("truetype");
+  }
+  .#{$font} {
+    font-family: "#{$glyph}";
+  }
+}
+
+:root {
+  --ff-raleway-r: "Raleway-Regular";
+  --ff-raleway-m: "Raleway-Medium";
+  --ff-raleway-sb: "Raleway-SemiBold";
+  --ff-raleway-b: "Raleway-Bold";
+  --ff-raleway-xb: "Raleway-ExtraBold";
+  --ff-opens-r: "OpenSans-Regular";
+  --ff-opens-m: "OpenSans-Medium";
+  --ff-opens-sb: "OpenSans-SemiBold";
+  --ff-opens-b: "OpenSans-Bold";
+  --ff-opens-xb: "OpenSans-ExtraBold";
+}

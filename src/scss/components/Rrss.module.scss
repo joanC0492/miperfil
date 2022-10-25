@@ -1,0 +1,17 @@
+.Rrss {
+  list-style: none;
+  padding-left: 0;
+  &Item {
+    margin-right: 20px;
+    &:nth-last-of-type(1) {
+      margin-right: 0;
+    }
+  }
+  &Link {
+    color: var(--theme-title);
+    font-size: 24px;
+    &:hover {
+      color: inherit;
+    }
+  }
+}

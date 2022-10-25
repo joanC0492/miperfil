@@ -1,0 +1,47 @@
+// Fonts
+$fonts-general: (
+  "ff-raleway-r" "Raleway-Regular" "raleway",
+  "ff-raleway-m" "Raleway-Medium" "raleway",
+  "ff-raleway-sb" "Raleway-SemiBold" "raleway",
+  "ff-raleway-b" "Raleway-Bold" "raleway",
+  "ff-raleway-xb" "Raleway-ExtraBold" "raleway",
+
+  "ff-opens-r" "OpenSans-Regular" "open_sans",
+  "ff-opens-m" "OpenSans-Medium" "open_sans",
+  "ff-opens-sb" "OpenSans-SemiBold" "open_sans",
+  "ff-opens-b" "OpenSans-Bold" "open_sans",
+  "ff-opens-xb" "OpenSans-ExtraBold" "open_sans"
+);
+
+$fonts-family: (
+  "ff-raleway-r": "Raleway-Regular",
+  "ff-raleway-m": "Raleway-Medium",
+  "ff-raleway-sb": "Raleway-SemiBold",
+  "ff-raleway-b": "Raleway-Bold",
+  "ff-raleway-xb": "Raleway-ExtraBold",
+  "ff-opens-r": "OpenSans-Regular",
+  "ff-opens-m": "OpenSans-Medium",
+  "ff-opens-sb": "OpenSans-SemiBold",
+  "ff-opens-b": "OpenSans-Bold",
+  "ff-opens-xb": "OpenSans-ExtraBold",
+);
+
+// Colors
+$colors-general: ("theme-dark" #212428 #ffffffb3, "theme-light" #fff #272829);
+$colors: (
+  "theme-dark-bg": #212428,
+  "theme-dark-txt": #ffffffb3,
+  "theme-dark-title": #f2f3f5,
+  "theme-dark-text-light": #f2f3f5,
+
+  "theme-light-bg": #fff,
+  "theme-light-txt": #272829,
+  "theme-light-title": #45505b,
+  "theme-light-text-light": #45505b,
+
+  "all-blue": #0563bb,
+  "all-white1": #ffffff,
+  "all-white2": #f2f3f5,
+  "all-dark1": #45505b,
+  "all-dark2": #212428de,
+);

@@ -1,0 +1,31 @@
+@import "../_variables.scss";
+
+#root {
+  font-size: 18px;
+  font-family: map-get($fonts-family, "ff-opens-r");
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 50.19px;
+  &.disabled {
+    overflow: hidden;
+    body {
+      overflow: hidden;
+    }
+  }
+  @media (min-width: 992px) {
+    scroll-padding-top: 49px;
+  }
+}
+
+.theme {
+  background-color: var(--theme-bg);
+  color: var(--theme-txt);
+}
+
+.Main {
+  @media (min-width: 992px) {
+    margin-left: 100px;
+  }
+}

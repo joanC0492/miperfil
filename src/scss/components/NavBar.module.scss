@@ -1,0 +1,164 @@
+.NavBar {
+  $el: &;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  transition: all 0.25s;
+  transform: translate(-100%);
+  width: 300px;
+  background-color: var(--theme-bg);
+  border-right: 1px solid transparent;
+  padding: 15px;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--theme-shadow);
+  @media (min-width: 992px) {
+    background-color: transparent;
+    transform: translate(0);
+    width: 181px;
+    box-shadow: none;
+  }
+  &List {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+    flex: 0 0 100%;
+  }
+  &Item {
+    position: relative;
+    white-space: nowrap;
+    &:hover {
+      #{$el}Link {
+        background-color: var(--all-blue1);
+        color: var(--all-white1);
+      }
+      #{$el}Txt {
+        color: var(--all-white1);
+      }
+    }
+  }
+  &Link {
+    display: flex;
+    align-items: center;
+    color: var(--all-dark1);
+    padding: 10px 18px;
+    margin-bottom: 8px;
+    transition: 0.3s;
+    font-size: 15px;
+    border-radius: 50px;
+    background-color: var(--all-white2);
+    height: 56px;
+    width: 100%;
+    overflow: hidden;
+    text-decoration: none;
+    &:hover {
+      width: 100%;
+      color: var(--all-white1);
+      #{$el}Txt {
+        display: block;
+      }
+    }
+    &Active {
+      background-color: var(--all-blue1);
+      #{$el}Icon {
+        color: var(--all-white1);
+      }
+      #{$el}Txt {
+        color: var(--all-white1);
+      }
+    }
+    @media (min-width: 992px) {
+      width: 56px;
+    }
+  }
+  &Icon {
+    font-size: 20px;
+  }
+  &Txt {
+    padding: 0 5px 0 7px;
+    color: var(--all-dark1);
+    @media (min-width: 992px) {
+      display: none;
+      color: var(--all-white1);
+    }
+  }
+  &Active {
+    transform: translate(0);
+  }
+}
+
+.Menu {
+  $el: &;
+  position: fixed;
+  top: 0;
+  z-index: 9;
+  width: 100%;
+  display: flex;
+  backdrop-filter: blur(15px);
+  padding-block: 10px;
+  box-shadow: var(--theme-shadow);
+  &List {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+  }
+  &Btn {
+    background-color: transparent;
+    color: var(--theme-icons);
+    border: none;
+  }
+  &Bar {
+    font-size: 26px;
+  }
+  // switch Button
+  &Switch {
+    position: relative;
+    display: inline-block;
+    width: 52px;
+    height: 25px;
+    top: 3.5px;
+  }
+  &Checkbox {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    &:checked {
+      + #{$el}Slider {
+        background-color: var(--all-dark3);
+        #{$el}Icontheme {
+          -webkit-transform: translateX(22px);
+          -ms-transform: translateX(22px);
+          transform: translateX(22px);
+        }
+      }
+    }
+  }
+  &Slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--all-white3);
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    border-radius: 34px;
+  }
+  &Icontheme {
+    position: absolute;
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 2px;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    border-radius: 50%;
+    background-color: var(--theme-icons-th);
+  }
+}

@@ -1,0 +1,13 @@
+.Layout {
+  &Section {
+    padding-block: calc(60px + -1rem);
+    @media (min-width: 992px) {
+      min-height: 100vh;
+      padding-block: 60px;
+      &:nth-last-of-type(1) {
+        // min-height: calc(100vh + -80px);
+        min-height: calc(100vh - 129px);
+      }
+    }
+  }
+}

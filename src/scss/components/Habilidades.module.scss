@@ -1,0 +1,37 @@
+.Habilidades {
+  &__title {
+    font-family: var(--ff-raleway-b);
+    font-size: 26px;
+    color: var(--all-dark4);
+  }
+  &__progress {
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  &__skill {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding-block: 2.5px;
+    font-family: var(--ff-raleway-sb);
+    font-size: 12px;
+  }
+  &__span {
+    color: var(--all-dark4);
+    opacity: .75;
+  }
+  &__content {
+    @media (min-width: 992px) {
+      flex: 0 0 50%;
+      &:nth-of-type(odd) {
+        padding-right: 1rem;
+      }
+    }
+  }
+  &__progress {
+    max-height: 10px;
+  }
+  &__progress_bar {
+    background-color: var(--all-blue1);
+  }
+}
