@@ -59,6 +59,14 @@ const workCards: IWorkCard[] = [
     link: "https://www.entel.pe/empresas/",
     description: ``,
   },
+  {
+    id: 7,
+    title: "Personal | miperfil",
+    skills: "React | HTML | SCSS | TS",
+    img: `project-miperfil`,
+    link: "https://joancochachi.com/",
+    description: ``,
+  },
 ];
 
 const projectImgs: Record<string, IModule> = import.meta.globEager(
