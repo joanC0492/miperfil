@@ -1,6 +1,6 @@
 # Proyecto "miperfil"
 
-![miperfil](https://joancochachi.com/assets/miperfil_screen.png)
+![miperfil](https://joancochachi.com/public/miperfil_screen.png)
 
 ## Iniciando dependencias
 
